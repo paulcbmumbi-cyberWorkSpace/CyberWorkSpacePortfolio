@@ -9,49 +9,55 @@ const sunIcon = document.querySelector('.fa-sun');
 const contactForm = document.getElementById('contact-form');
 
 // Header scroll effect
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('header-scroll');
-    } else {
-        header.classList.remove('header-scroll');
-    }
-});
+if (header) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('header-scroll');
+        } else {
+            header.classList.remove('header-scroll');
+        }
+    });
+}
 
 // Mobile Navigation
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('nav-active');
-    hamburger.classList.toggle('active');
-    document.body.classList.toggle('no-scroll'); // Prevent body scrolling when menu is open
-});
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-active');
+        hamburger.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    });
+}
 
 // Close mobile menu when clicking on a link
 navLinksItems.forEach(item => {
     item.addEventListener('click', () => {
-        if (navLinks.classList.contains('nav-active')) {
+        if (navLinks && navLinks.classList.contains('nav-active')) {
             navLinks.classList.remove('nav-active');
-            hamburger.classList.remove('active');
+            if (hamburger) {
+                hamburger.classList.remove('active');
+            }
             document.body.classList.remove('no-scroll');
         }
     });
 });
 
 // Theme toggle functionality
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('light-theme');
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
 
-    // Toggle icons
-    if (document.body.classList.contains('light-theme')) {
-        moonIcon.style.display = 'none';
-        sunIcon.style.display = 'block';
-    } else {
-        moonIcon.style.display = 'block';
-        sunIcon.style.display = 'none';
-    }
+        if (document.body.classList.contains('light-theme')) {
+            if (moonIcon) moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'block';
+        } else {
+            if (moonIcon) moonIcon.style.display = 'block';
+            if (sunIcon) sunIcon.style.display = 'none';
+        }
 
-    // Save theme preference to localStorage
-    const theme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
-    localStorage.setItem('theme', theme);
-});
+        const theme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+        localStorage.setItem('theme', theme);
+    });
+}
 
 // Load saved theme preference
 document.addEventListener('DOMContentLoaded', () => {
@@ -59,11 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (savedTheme === 'light') {
         document.body.classList.add('light-theme');
-        moonIcon.style.display = 'none';
-        sunIcon.style.display = 'block';
+        if (moonIcon) moonIcon.style.display = 'none';
+        if (sunIcon) sunIcon.style.display = 'block';
     }
 
-    // Add animations with delay for elements
     const animateElements = () => {
         const sections = document.querySelectorAll('section');
 

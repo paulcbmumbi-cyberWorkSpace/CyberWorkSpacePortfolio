@@ -338,6 +338,20 @@ nav {
     flex: 1;
 }
 
+.hero-kicker {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.45rem 0.8rem;
+    border: 1px solid rgba(0, 238, 255, 0.4);
+    border-radius: 999px;
+    background: rgba(0, 238, 255, 0.08);
+    color: var(--accent-color);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
 .hero-text h1 {
     margin-bottom: var(--spacing-xs);
 }
@@ -349,6 +363,24 @@ nav {
     margin-bottom: var(--spacing-s);
 }
 
+.hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.hero-badges span {
+    display: inline-block;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(0, 255, 102, 0.06);
+    border: 1px solid rgba(0, 255, 102, 0.25);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
 .hero-text p {
     color: var(--text-secondary);
     margin-bottom: var(--spacing-m);
@@ -356,7 +388,14 @@ nav {
 }
 
 .cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     margin-bottom: var(--spacing-m);
+}
+
+.cta-buttons .btn {
+    margin-right: 0;
 }
 
 .social-icons {
@@ -626,16 +665,30 @@ nav {
 
 .project-links {
     display: flex;
-    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: var(--spacing-s);
 }
 
 .project-links a {
-    color: var(--text-muted);
-    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: rgba(0, 238, 255, 0.08);
+    border: 1px solid rgba(0, 238, 255, 0.25);
+    padding: 0.65rem 0.9rem;
+    border-radius: 999px;
+    transition: var(--transition);
 }
 
 .project-links a:hover {
-    color: var(--accent-color);
+    color: var(--primary-dark);
+    background: var(--accent-color);
+    box-shadow: 0 0 18px rgba(0, 238, 255, 0.35);
 }
 
 .project-body {
@@ -1148,6 +1201,13 @@ nav {
     margin-bottom: var(--spacing-s);
 }
 
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
 .form-group input, .form-group textarea {
     width: 100%;
     padding: 12px 15px;
@@ -1267,6 +1327,33 @@ footer {
     margin-bottom: 0;
 }
 
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.section-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.success-message {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(0, 255, 102, 0.08);
+    border: 1px solid rgba(0, 255, 102, 0.35);
+    border-radius: var(--border-radius);
+    padding: 1rem 1.2rem;
+    color: var(--text-primary);
+}
+
+.success-message i {
+    color: var(--success-color);
+    font-size: 1.2rem;
+}
+
 /* Theme toggle button */
 .theme-toggle {
     position: fixed;
@@ -1299,9 +1386,37 @@ footer {
     display: none;
 }
 
-/* Light theme styles can be added with a .light-theme class */
-.light-theme {
-    /* This will be implemented in JavaScript */
+/* Light theme styles */
+body.light-theme {
+    --primary-dark: #edf4ff;
+    --secondary-dark: #dfeaff;
+    --tertiary-dark: #ffffff;
+    --text-primary: #101827;
+    --text-secondary: #243244;
+    --text-muted: #4b5d75;
+    --border-color: #c9d7ee;
+    --box-shadow: 0 10px 30px -15px rgba(15, 23, 42, 0.18);
+}
+
+body.light-theme .hero {
+    background: radial-gradient(circle at 10% 20%, rgba(0, 170, 255, 0.14) 0%, rgba(237, 244, 255, 1) 80%);
+}
+
+body.light-theme .certification-logo {
+    box-shadow: 0 0 20px rgba(0, 238, 255, 0.25);
+}
+
+body.light-theme .theme-toggle {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 170, 255, 0.25);
+}
+
+body.light-theme .fa-moon {
+    display: none;
+}
+
+body.light-theme .fa-sun {
+    display: inline-block;
 }
 
 /* ====================
