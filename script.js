@@ -21,10 +21,23 @@ if (header) {
 
 // Mobile Navigation
 if (hamburger && navLinks) {
+    const setNavigationOpen = (isOpen) => {
+        navLinks.classList.toggle('nav-active', isOpen);
+        hamburger.classList.toggle('active', isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        hamburger.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+        document.body.classList.toggle('no-scroll', isOpen);
+    };
+
     hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('nav-active');
-        hamburger.classList.toggle('active');
-        document.body.classList.toggle('no-scroll');
+        setNavigationOpen(!navLinks.classList.contains('nav-active'));
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && navLinks.classList.contains('nav-active')) {
+            setNavigationOpen(false);
+            hamburger.focus();
+        }
     });
 }
 
@@ -35,6 +48,8 @@ navLinksItems.forEach(item => {
             navLinks.classList.remove('nav-active');
             if (hamburger) {
                 hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburger.setAttribute('aria-label', 'Open navigation');
             }
             document.body.classList.remove('no-scroll');
         }
@@ -93,10 +108,10 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value;
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
 
         // Simple form validation
         if (!name || !email || !subject || !message) {
@@ -104,29 +119,11 @@ if (contactForm) {
             return;
         }
 
-        // Here you would normally send the form data to a server
-        // For this demo, we'll just show a success message
+        const recipient = 'mumbipaul2026@gmail.com';
+        const emailBody = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+        const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
 
-        const formData = {
-            name,
-            email,
-            subject,
-            message
-        };
-
-        console.log('Form submitted:', formData);
-
-        // Show success message
-        const successMessage = document.createElement('div');
-        successMessage.className = 'success-message';
-        successMessage.innerHTML = `
-            <i class="fas fa-check-circle"></i>
-            <p>Thank you for your message, ${name}! I'll get back to you soon.</p>
-        `;
-
-        // Replace form with success message
-        contactForm.innerHTML = '';
-        contactForm.appendChild(successMessage);
+        window.location.href = mailtoUrl;
     });
 }
 

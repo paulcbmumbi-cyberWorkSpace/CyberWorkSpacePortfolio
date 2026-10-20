@@ -66,6 +66,10 @@ body {
     overflow-x: hidden;
 }
 
+body.no-scroll {
+    overflow: hidden;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -215,7 +219,7 @@ button, .btn {
    Header & Navigation
    ==================== */
 header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -282,6 +286,14 @@ nav {
 .hamburger {
     display: none;
     cursor: pointer;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.hamburger:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 5px;
 }
 
 .hamburger .line {
@@ -1239,6 +1251,12 @@ nav {
     margin-top: var(--spacing-s);
 }
 
+.form-note {
+    color: var(--text-muted);
+    font-size: var(--fs-xs);
+    margin: var(--spacing-s) 0 0;
+}
+
 /* ====================
    Footer Section
    ==================== */
@@ -1451,20 +1469,20 @@ body.light-theme .fa-sun {
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 250px;
+        right: 0;
+        display: none;
+        width: min(250px, 100vw);
         height: 100vh;
         background-color: var(--secondary-dark);
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transition: 0.5s;
         z-index: 900;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
     }
 
     .nav-active {
-        right: 0;
+        display: flex;
     }
 
     .hamburger {

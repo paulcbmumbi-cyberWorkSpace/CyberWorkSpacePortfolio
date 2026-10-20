@@ -24,7 +24,7 @@
                 <div class="logo">
                     <a href="#home"><span>&lt;</span>PCBM<span>/&gt;</span></a>
                 </div>
-                <ul class="nav-links">
+                <ul class="nav-links" id="primary-navigation">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
@@ -35,11 +35,11 @@
                     <li><a href="#resume">Resume</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="hamburger">
+                <button class="hamburger" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">
                     <div class="line"></div>
                     <div class="line"></div>
                     <div class="line"></div>
-                </div>
+                </button>
             </nav>
         </div>
     </header>
@@ -49,7 +49,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <span class="hero-kicker">IT Support • Cybersecurity Graduate • Active Directory • Python Automation</span>
+                    <span class="hero-comment">Hello, I'm Paul Chola Bwembya Mumbi</span>
                     <h1>Paul Chola Bwembya Mumbi</h1>
                     <h2>IT Support | Cybersecurity Graduate | Active Directory | Python Automation &amp; Data Analytics</h2>
                     <div class="hero-badges" aria-label="Core cybersecurity areas">
@@ -111,7 +111,7 @@
                     <p>With certifications in Google Cloud Cybersecurity and Google IT Automation with Python, I am seeking opportunities in IT Support, SOC Analyst, and entry-level Cybersecurity roles where I can contribute, continue learning, and strengthen security operations.</p>
                 </div>
                 <div class="contact-info">
-                    <div class="contact-item"><i class="fas fa-envelope"></i><span>mumbipaul88@gmail.com</span></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><span>mumbipaul2026@gmail.com</span></div>
                     <div class="contact-item"><i class="fas fa-phone"></i><span>+260970838458</span></div>
                     <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Kasama, Zambia</span></div>
                 </div>
@@ -377,7 +377,6 @@
                         <a href="https://github.com/PaulChola/malware-detection-ml" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-github"></i> View Project
                         </a>
-                        <button class="btn secondary-btn" onclick="openCaseStudy()">View Case Study</button>
                     </div>
                 </div>
 
@@ -513,6 +512,7 @@
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn primary-btn">Send Message</button>
+                        <p class="form-note">This opens your email app with a draft. Send it there to complete delivery.</p>
                     </form>
                 </div>
             </div>
