@@ -199,6 +199,33 @@ button, .btn {
     box-shadow: 0 0 20px rgba(0, 238, 255, 0.8);
 }
 
+.projects-btn {
+    background: linear-gradient(110deg, var(--accent-color), var(--accent-color-2));
+    color: var(--primary-dark);
+    box-shadow: 0 0 16px rgba(0, 238, 255, 0.45);
+    font-weight: 600;
+}
+
+.projects-btn:hover {
+    color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 0 24px rgba(0, 238, 255, 0.75);
+}
+
+.projects-btn i {
+    margin-left: 0.4rem;
+    transition: transform 0.3s ease;
+}
+
+.projects-btn:hover i {
+    transform: translateX(4px);
+}
+
+.projects-btn:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 4px;
+}
+
 
 
 .download-btn {
