@@ -128,6 +128,38 @@ if (contactForm) {
 }
 
 // Add smooth scrolling to all links
+const projectsButton = document.querySelector('.projects-btn');
+if (projectsButton) {
+    const showProjectsRipple = (x, y) => {
+        const buttonBounds = projectsButton.getBoundingClientRect();
+        const diameter = Math.max(buttonBounds.width, buttonBounds.height) * 2;
+        const ripple = document.createElement('span');
+
+        ripple.className = 'projects-btn-ripple';
+        ripple.setAttribute('aria-hidden', 'true');
+        ripple.style.width = `${diameter}px`;
+        ripple.style.height = `${diameter}px`;
+        ripple.style.left = `${x - buttonBounds.left - diameter / 2}px`;
+        ripple.style.top = `${y - buttonBounds.top - diameter / 2}px`;
+        projectsButton.append(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+    };
+
+    projectsButton.addEventListener('pointerdown', (event) => {
+        showProjectsRipple(event.clientX, event.clientY);
+    });
+
+    projectsButton.addEventListener('click', (event) => {
+        if (event.detail === 0) {
+            const buttonBounds = projectsButton.getBoundingClientRect();
+            showProjectsRipple(
+                buttonBounds.left + buttonBounds.width / 2,
+                buttonBounds.top + buttonBounds.height / 2
+            );
+        }
+    });
+}
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();

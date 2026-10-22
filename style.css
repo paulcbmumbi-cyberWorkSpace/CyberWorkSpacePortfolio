@@ -200,15 +200,56 @@ button, .btn {
 }
 
 .projects-btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
     background: linear-gradient(110deg, var(--accent-color), var(--accent-color-2));
     color: var(--primary-dark);
     box-shadow: 0 0 16px rgba(0, 238, 255, 0.45);
     font-weight: 600;
+    animation: projects-btn-bounce 2.4s ease-in-out infinite;
+}
+
+.projects-btn-ripple {
+    position: absolute;
+    z-index: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    transform: scale(0);
+    animation: click-ripple 600ms ease-out forwards;
+}
+
+.projects-btn > span {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes click-ripple {
+    to {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes projects-btn-bounce {
+    0%, 65%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    72% {
+        transform: translateY(-5px) scale(1.06);
+    }
+    79% {
+        transform: translateY(1px) scale(0.97);
+    }
+    86% {
+        transform: translateY(-2px) scale(1.02);
+    }
 }
 
 .projects-btn:hover {
     color: var(--primary-dark);
-    transform: translateY(-3px);
+    animation: projects-btn-bounce 550ms ease-out 1;
     box-shadow: 0 0 24px rgba(0, 238, 255, 0.75);
 }
 
@@ -224,6 +265,23 @@ button, .btn {
 .projects-btn:focus-visible {
     outline: 2px solid var(--text-primary);
     outline-offset: 4px;
+    animation: projects-btn-bounce 550ms ease-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .projects-btn-ripple {
+        animation-duration: 1ms;
+    }
+
+    .projects-btn:hover,
+    .projects-btn:focus-visible {
+        animation: none;
+        transform: none;
+    }
+
+    .projects-btn {
+        animation: none;
+    }
 }
 
 
