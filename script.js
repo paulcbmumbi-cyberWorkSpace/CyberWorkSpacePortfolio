@@ -176,22 +176,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
-// Add typing effect to the binary in hero section
-const binaryElement = document.querySelector('.binary');
-if (binaryElement) {
-    const originalText = binaryElement.innerText;
-    binaryElement.innerText = '';
-
-    let i = 0;
-    const typeWriter = () => {
-        if (i < originalText.length) {
-            binaryElement.innerText += originalText.charAt(i);
-            i++;
-            setTimeout(typeWriter, 50);
-        }
-    };
-
-    // Start typing effect when page loads
-    setTimeout(typeWriter, 1000);
-}
