@@ -484,6 +484,13 @@ nav {
     max-width: 600px;
 }
 
+.htb-profile-image {
+    width: 100%;
+    max-width: 360px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
 .cta-buttons {
     display: flex;
     flex-wrap: wrap;
